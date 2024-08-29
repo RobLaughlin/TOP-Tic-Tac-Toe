@@ -46,5 +46,3 @@ const TicTacToe = (function() {
 
     return { game };
 })();
-
-console.log(TicTacToe.game);
