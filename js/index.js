@@ -3,12 +3,22 @@ import PubSub from "./PubSub.js";
 
 const Index = (function() {
     function render(data) {
-        const { player, square, gameState } = data;
-        const targetSquareIdx = square.row * 3 + square.col;
-        
-        const board = document.getElementById("TTTBoard");
-        let targetSquare = board.getElementsByClassName("square")[targetSquareIdx];
-        targetSquare.classList.add(player);
+        const { player, board, gameState } = data;
+        console.log(board);
+        const boardElem = document.getElementById("TTTBoard");
+        let squares = boardElem.getElementsByClassName("square");
+        console.log(squares.length);
+        for (let i = 0; i < squares.length; i++) {
+            let square = squares[i];
+            // console.log(square);
+            const squareIdx = square.dataset.index;
+            // console.log(squareIdx);
+            const row = Math.floor((squareIdx-1) / 3);
+            const col = (squareIdx-1) % 3;
+            if (board[row][col] !== '_') {
+                square.classList.add(board[row][col]);
+            }
+        }
     };
 
     function squareClicked(e) {

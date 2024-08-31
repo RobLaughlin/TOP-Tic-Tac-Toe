@@ -46,7 +46,7 @@ const TicTacToe = (function() {
 
             PubSub.publish("render", {
                 player: PLAYERS[currentPlayer],
-                square: {row, col},
+                board: getBoard(),
                 gameState: GAME_STATES[gameState]
             });
 
