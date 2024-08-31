@@ -9,7 +9,6 @@ const Index = (function() {
         const board = document.getElementById("TTTBoard");
         let targetSquare = board.getElementsByClassName("square")[targetSquareIdx];
         targetSquare.classList.add(player);
-        console.log(gameState);
     };
 
     function squareClicked(e) {
@@ -19,13 +18,10 @@ const Index = (function() {
         try {
             TicTacToe.game.playMove(row, col);
         } catch {};
-        
     }
 
     function init() {
         PubSub.subscribe("render", render);
-        TicTacToe.game.playMove(2,2);
-        TicTacToe.game.playMove(2,1);
     
         document.querySelectorAll("#TTTBoard > .square").forEach(square => {
             square.addEventListener("click", squareClicked);
