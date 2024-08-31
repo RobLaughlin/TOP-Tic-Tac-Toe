@@ -1,0 +1,28 @@
+#TTTBoard {
+    width: 45vw;
+    height: 45vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    margin: auto;
+}
+
+#TTTBoard > .square {
+    border: 2px solid black;
+}
+
+#TTTBoard > .square:nth-child(3n - 2) {
+    border-left: 0;
+}
+
+#TTTBoard > .square:nth-child(3n) {
+    border-right: 0;
+}
+
+#TTTBoard > .square:nth-child(n + 7) {
+    border-bottom: 0;
+}
+
+#TTTBoard > .square:nth-child(-n + 3) {
+    border-top: 0;
+}
