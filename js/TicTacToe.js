@@ -104,9 +104,27 @@ const TicTacToe = (function() {
             }).join("\n");
         };
 
+        const resetBoard = function() {
+            currentPlayer = 0;
+            gameState = 0;
+            movesPlayed = 0;
+            board = [
+                ['_', '_', '_'],
+                ['_', '_', '_'], 
+                ['_', '_', '_']
+            ];
+
+            PubSub.publish("render", {
+                player: PLAYERS[currentPlayer],
+                board: getBoard(),
+                gameState: GAME_STATES[gameState]
+            });
+
+        }
+
         const getCurrentPlayer = () => { return PLAYERS[currentPlayer]; };
 
-        return { playMove, getSquare, getBoard, getCurrentPlayer, getBoardStr };
+        return { playMove, getSquare, getBoard, getCurrentPlayer, getBoardStr, resetBoard };
     })();
 
     return { game };
