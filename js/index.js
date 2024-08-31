@@ -3,15 +3,34 @@ import PubSub from "./PubSub.js";
 
 function render(data) {
     const { player, square, gameState } = data;
-    console.log(player);
-    console.log(square);
+    const targetSquareIdx = square.row * 3 + square.col;
+    
+    const board = document.getElementById("TTTBoard");
+    let targetSquare = board.getElementsByClassName("square")[targetSquareIdx];
+    targetSquare.classList.add(player);
     console.log(gameState);
 };
 
-PubSub.subscribe("render", render);
+function squareClicked(e) {
+    const squareIdx = e.target.dataset.index;
+    const row = Math.floor((squareIdx-1) / 3);
+    const col = (squareIdx-1) % 3;
+    try {
+        TicTacToe.game.playMove(row, col);
+    } catch {};
+    
+}
 
-TicTacToe.game.playMove(2,2);
-TicTacToe.game.playMove(2,1);
+function init() {
+    PubSub.subscribe("render", render);
+    TicTacToe.game.playMove(2,2);
+    TicTacToe.game.playMove(2,1);
 
-PubSub.unsubscribe("render", render);
-TicTacToe.game.playMove(2,0); // Should not display in console
+    document.querySelectorAll("#TTTBoard > .square").forEach(square => {
+        square.addEventListener("click", squareClicked);
+    });
+}
+
+init();
+
+

@@ -11,6 +11,14 @@
     border: 2px solid black;
 }
 
+#TTTBoard > .square.X {
+    background-image: url("../icons/X.svg");
+}
+
+#TTTBoard > .square.O {
+    background-image: url("../icons/O.svg");
+}
+
 #TTTBoard > .square:nth-child(3n - 2) {
     border-left: 0;
 }
