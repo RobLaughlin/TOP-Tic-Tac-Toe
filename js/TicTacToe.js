@@ -1,3 +1,5 @@
+import PubSub from "./PubSub.js";
+
 const TicTacToe = (function() {
     let game = (function() {
         const PLAYERS = ['X', 'O'];
@@ -44,6 +46,8 @@ const TicTacToe = (function() {
             else if (winner) {
                 gameState = 1;
             };
+
+            PubSub.publish("movePlayed", this);
         };
 
 
@@ -103,3 +107,5 @@ const TicTacToe = (function() {
 
     return { game };
 })();
+
+export default TicTacToe;
