@@ -29,25 +29,29 @@ const TicTacToe = (function() {
             else if (gameState === 2) {
                 throw new Error("The game already ended in a draw.");
             }
-
+            
             board[row][col] = PLAYERS[currentPlayer];
             movesPlayed++;
-
-            // Swap players
-            currentPlayer = (currentPlayer + 1) % PLAYERS.length;
 
             const winner = checkWinner();
 
             // Assumes a square board
-            // Determines a draw
             if ((!winner && movesPlayed) === (board.length * board[0].length)) {
+                // Determines a draw
                 gameState = 2;
             }
             else if (winner) {
                 gameState = 1;
             };
 
-            PubSub.publish("movePlayed", this);
+            PubSub.publish("render", {
+                player: PLAYERS[currentPlayer],
+                square: {row, col},
+                gameState: GAME_STATES[gameState]
+            });
+
+            // Swap players
+            currentPlayer = (currentPlayer + 1) % PLAYERS.length;
         };
 
 
