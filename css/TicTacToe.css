@@ -13,10 +13,14 @@
 
 #TTTBoard > .square.X {
     background-image: url("../icons/X.svg");
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 #TTTBoard > .square.O {
     background-image: url("../icons/O.svg");
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 #TTTBoard > .square:nth-child(3n - 2) {
