@@ -1,33 +1,3 @@
-.TTTBoardContainer {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-}
-
-#TTTWinner {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#TTTWinner > .playerIcon {
-    width: 80px;
-    height: 80px;
-}
-
-#TTTWinner > .playerIcon.X {
-    background-image: url("../icons/X.svg");
-}
-
-#TTTWinner > .playerIcon.O {
-    background-image: url("../icons/O.svg");
-}
-
-#TTTWinner > .TTTWinnerText {
-    font-size: 64px;
-    font-family: 'Courier New', Courier, monospace;
-}
-
 #TTTBoard {
     width: 45vw;
     height: 45vw;
@@ -64,3 +34,4 @@
 #TTTBoard > .square:nth-child(-n + 3) {
     border-top: 0;
 }
+

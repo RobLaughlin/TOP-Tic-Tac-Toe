@@ -6,7 +6,54 @@
 
 .TTTBoardContainer {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    margin: auto;
 }
+
+#Winner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#Winner > .playerIcon {
+    width: 80px;
+    height: 80px;
+}
+
+#Winner > .playerIcon.X {
+    background-image: url("../icons/X.svg");
+}
+
+#Winner > .playerIcon.O {
+    background-image: url("../icons/O.svg");
+}
+
+#Winner > .winnerText {
+    font-size: 64px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#ResetBtnContainer {
+    display: flex;
+    margin-top: 32px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+#ResetBtnContainer > .resetBtn {
+    width: 15%;
+    height: 32px;
+    border-radius: 4px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+#ResetBtnContainer > .resetBtn:hover {
+    background-color: lightgray;
+}
+

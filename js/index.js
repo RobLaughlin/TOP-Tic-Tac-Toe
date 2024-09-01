@@ -23,14 +23,15 @@ const Index = (function() {
         }
 
         // Render the current player's turn
-        let playerIcon = boardElem.parentNode.querySelector("#TTTWinner > .playerIcon");
+        let playerIcon = boardElem.parentNode.querySelector("#Winner > .playerIcon");
         playerIcon.classList.remove(player);
         
         // Render the game state
-        let winnerText = boardElem.parentNode.querySelector("#TTTWinner > .TTTWinnerText");
+        let winnerText = boardElem.parentNode.querySelector("#Winner > .winnerText");
         switch (gameState) {
             case "PLAYING": 
                 playerIcon.classList.add(player === 'X' ? 'O' : 'X');
+                winnerText.textContent = "'s Turn...";
                 break;
             case "DRAW":
                 playerIcon.classList.remove(player);
@@ -53,12 +54,19 @@ const Index = (function() {
         } catch {};
     }
 
+    function resetBtnClicked() {
+        TicTacToe.game.resetBoard();
+    }
+
     function init() {
         PubSub.subscribe("render", render);
     
         document.querySelectorAll("#TTTBoard > .square").forEach(square => {
             square.addEventListener("click", squareClicked);
         });
+
+        let resetBtn = document.querySelector("#ResetBtnContainer > .resetBtn");
+        resetBtn.addEventListener("click", resetBtnClicked);
     }
 
     return { init }

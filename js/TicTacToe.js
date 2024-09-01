@@ -115,7 +115,7 @@ const TicTacToe = (function() {
             ];
 
             PubSub.publish("render", {
-                player: PLAYERS[currentPlayer],
+                player: 'O', // Need this to render X as the default player
                 board: getBoard(),
                 gameState: GAME_STATES[gameState]
             });
