@@ -21,6 +21,27 @@ const Index = (function() {
                 square.classList.remove('O');
             }
         }
+
+        // Render the current player's turn
+        let playerIcon = boardElem.parentNode.querySelector("#TTTWinner > .playerIcon");
+        playerIcon.classList.remove(player);
+        
+        // Render the game state
+        let winnerText = boardElem.parentNode.querySelector("#TTTWinner > .TTTWinnerText");
+        switch (gameState) {
+            case "PLAYING": 
+                playerIcon.classList.add(player === 'X' ? 'O' : 'X');
+                break;
+            case "DRAW":
+                playerIcon.classList.remove(player);
+                winnerText.textContent = "Draw!";
+                break;
+            case "WINNER":
+                playerIcon.classList.add(player);
+                winnerText.textContent = "'s Wins!";
+                break;
+            default: break;
+        }
     };
 
     function squareClicked(e) {
